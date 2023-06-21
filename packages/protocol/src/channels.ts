@@ -1780,6 +1780,7 @@ export interface PageEventTarget {
 }
 export interface PageChannel extends PageEventTarget, EventTargetChannel {
   _type_Page: boolean;
+  pickBestLocator(params: PagePickBestLocatorParams, metadata?: CallMetadata): Promise<PagePickBestLocatorResult>;
   setDefaultNavigationTimeoutNoReply(params: PageSetDefaultNavigationTimeoutNoReplyParams, metadata?: CallMetadata): Promise<PageSetDefaultNavigationTimeoutNoReplyResult>;
   setDefaultTimeoutNoReply(params: PageSetDefaultTimeoutNoReplyParams, metadata?: CallMetadata): Promise<PageSetDefaultTimeoutNoReplyResult>;
   addInitScript(params: PageAddInitScriptParams, metadata?: CallMetadata): Promise<PageAddInitScriptResult>;
@@ -1850,6 +1851,16 @@ export type PageWebSocketEvent = {
 };
 export type PageWorkerEvent = {
   worker: WorkerChannel,
+};
+export type PagePickBestLocatorParams = {
+  selector: string,
+};
+export type PagePickBestLocatorOptions = {
+
+};
+export type PagePickBestLocatorResult = {
+  selector: string,
+  locator: string,
 };
 export type PageSetDefaultNavigationTimeoutNoReplyParams = {
   timeout?: number,
